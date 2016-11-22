@@ -21,12 +21,12 @@
 
 <div class="main_content">
 
-    <h2>Posts</h2>
+    <h2>Are you Free?</h2>
 
 	<div id="vue-div" class="display:none">
     <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
         <div class="button_bar">
-            <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'hidden': !logged_in}">{{=icon_add}} Add new post</button>
+            <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'hidden': !logged_in}">{{=icon_add}} Add new event</button>
             <button v-if="is_adding_post" class="btn btn-warning btn-sm" v-on:click="add_post_button()">{{=icon_cancel}} Cancel</button>
         </div>
         <br>
@@ -34,8 +34,28 @@
             <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <div>
-                        <input class="form-control string" v-model="form_post_content" placeholder="Post Content" type="text"/>
+                        <input class="form-control string" v-model="form_post_content" placeholder="Event Name" type="text"/>
                         <span class="help-block"></span>
+                    </div>
+                </div>
+		<div class="form-group" id="form_description">
+                    <div>
+                        <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_description" placeholder="Description of the event"></textarea>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group" id="form_date">
+                    <div>
+                    Start Date <input type="date" name="start_date">
+                    End Date <input type="date" name="start_date">
+                    <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group" id="form_time">
+                    <div>
+                    Start Time <input type="time" name="start_time"> 
+                    End time <input type="time" name="end_time">
+                    <span class="help-block"></span>
                     </div>
                 </div>
                 <div class="form-group" id="submit_record_row">
