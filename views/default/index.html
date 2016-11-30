@@ -21,7 +21,7 @@
 
 <div class="main_content">
 
-    <h2>Are you Free?</h2>
+    <img src="http://i.imgur.com/AuYIoll.png" alt="logo" height="110" width="330">
 
 	<div id="vue-div" class="display:none">
     <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
@@ -31,33 +31,43 @@
         </div>
         <br>
         <div v-if="is_adding_post" id="add_post_div">
-            <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
+            <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post" style="width: 400px">
                 <div class="form-group">
                     <div>
                         <input class="form-control string" v-model="form_post_content" placeholder="Event Name" type="text"/>
                         <span class="help-block"></span>
                     </div>
                 </div>
-		<div class="form-group" id="form_description">
+                <div class="form-group" id="form_description">
                     <div>
                         <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_description" placeholder="Description of the event"></textarea>
                         <span class="help-block"></span>
                     </div>
                 </div>
-                <div class="form-group" id="form_date">
+                <div class="form-group" id="form_startdate">
                     <div>
                     Start Date <input type="date" name="start_date">
-                    End Date <input type="date" name="start_date">
                     <span class="help-block"></span>
                     </div>
                 </div>
-                <div class="form-group" id="form_time">
+                <div class="form-group" id="form_enddate">
                     <div>
-                    Start Time <input type="time" name="start_time"> 
-                    End time <input type="time" name="end_time">
+                    End Date <input type="date" name="end_date">
+                    <span class="help-block"></span>
+                    </div>
+                </div>                
+                <div class="form-group" id="form_starttime">
+                    <div>
+                    Start Time <input type="time" name="start_time">
                     <span class="help-block"></span>
                     </div>
                 </div>
+                <div class="form-group" id="form_endtime">
+                    <div>
+                    End Time <input type="time" name="end_time">
+                    <span class="help-block"></span>
+                    </div>
+                </div>                
                 <div class="form-group" id="submit_record_row">
                     <div>
                         <input class="btn btn-primary" id="add_post_submit" v-on:click="add_post()" type="button" value="Submit" />
