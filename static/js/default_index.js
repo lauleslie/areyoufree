@@ -123,6 +123,11 @@ var app = function() {
             logged_in: false,
             posts: [],
             form_post_content: null,
+            form_event_description: null,
+            form_start_date: null,
+            form_end_date: null,
+            form_start_time: null,
+            form_end_time: null,
             form_edit_content: null,
             user: null
         },
