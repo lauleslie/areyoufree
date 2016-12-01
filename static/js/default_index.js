@@ -72,6 +72,9 @@ var app = function() {
         self.vue.form_post_content = "";
         self.vue.form_event_description = "";
         self.vue.form_start_date = "";
+        self.vue.form_end_date = "";
+        self.vue.form_start_time = "";
+        self.vue.form_end_time = "";
 
     };
 
