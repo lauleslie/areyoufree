@@ -71,6 +71,10 @@ def get_posts():
                 id = r.id,
                 post_content = r.post_content,
                 event_description = r.event_description,
+                start_date = r.start_date,
+                end_date = r.end_date,
+                start_time = r.start_time,
+                end_time = r.end_time,
                 user_email = r.user_email,
                 created_on = pretty_date(r.created_on),
                 user_name = get_user_name_from_email(r.user_email),
@@ -100,6 +104,10 @@ def add_post():
     p_id = db.post.insert(
         post_content = request.vars.post_content,
         event_description = request.vars.event_description,
+        start_date = request.vars.start_date,
+        end_date = request.vars.end_date,
+        start_time = request.vars.start_time,
+        end_time = request.vars.end_time
     )
     p = db.post(p_id)
     return response.json(dict(post=p))

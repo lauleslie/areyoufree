@@ -57,6 +57,10 @@ var app = function() {
             {
                 post_content: self.vue.form_post_content,
                 event_description: self.vue.form_event_description,
+                start_date: self.vue.form_start_date,
+                end_date: self.vue.form_end_date,
+                start_time: self.vue.form_start_time,
+                end_time: self.vue.form_end_time
             },
             function (data) {
                 $.web2py.enableElement($("#add_post_submit"));
@@ -67,6 +71,8 @@ var app = function() {
         self.add_post_button();
         self.vue.form_post_content = "";
         self.vue.form_event_description = "";
+        self.vue.form_start_date = "";
+
     };
 
     self.delete_post = function(post_idx) {

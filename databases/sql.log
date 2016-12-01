@@ -105,3 +105,87 @@ success!
 success!
 success!
 success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2016-11-30T19:04:24.388883
+ALTER TABLE post ADD end_date DATE;
+timestamp: 2016-11-30T19:04:24.391710
+ALTER TABLE post ADD start_time TIME;
+timestamp: 2016-11-30T19:04:24.393672
+ALTER TABLE post ADD end_time TIME;
+timestamp: 2016-11-30T19:04:24.396407
+ALTER TABLE post ADD start_date DATE;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
