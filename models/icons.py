@@ -1,2 +1,5 @@
 icon_add = I(_class='fa fa-plus')
 icon_cancel = I(_class = 'fa fa-times')
+icon_usercircle = I(_class = 'fa fa-user')
+icon_cal = I(_class = 'fa fa-calendar')
+icon_clock = I(_class = 'fa fa-clock-o')

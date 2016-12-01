@@ -127,7 +127,7 @@ var app = function() {
             form_start_date: null,
             form_end_date: null,
             form_start_time: null,
-            form_end_time: null,
+
             form_edit_content: null,
             user: null
         },
