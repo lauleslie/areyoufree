@@ -1,6 +1,12 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+
+.fa-calendar {
+  float: right;
+  color: #d75452;
+
+}
 /* line 2, ../sass/_main.scss */
 .post_listing {
   margin: 10px 0px 10px 0px;

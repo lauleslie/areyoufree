@@ -98,11 +98,11 @@
                 <div class = "post-content">
                     <h3> ${post.post_content}
                     <small> ${post.event_description}</small> </h3><br>
+                    <h1><i class="fa fa-calendar" aria-hidden="true"></i></h1>
                     {{=icon_clock}} ${post.start_date} to ${post.end_date} <br>
                     Time of event: ${post.start_time} to ${post.end_time} <br>
                     <div>
                     {{=icon_usercircle}} <span class="author">${post.user_name}</span> ${post.created_on} </div> <br>
-                    <h1><i class="fa fa-calendar" aria-hidden="true" align="right"></i></h1>
                     <div v-if="post.created_on != post.updated_on">
                           Edited ${post.updated_on}
                     </div>
