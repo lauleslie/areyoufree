@@ -56,6 +56,7 @@ var app = function() {
         $.post(add_post_url,
             {
                 post_content: self.vue.form_post_content,
+                event_description: self.vue.form_event_description,
             },
             function (data) {
                 $.web2py.enableElement($("#add_post_submit"));
@@ -65,6 +66,7 @@ var app = function() {
             });
         self.add_post_button();
         self.vue.form_post_content = "";
+        self.vue.form_event_description = "";
     };
 
     self.delete_post = function(post_idx) {

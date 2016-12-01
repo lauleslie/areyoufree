@@ -73,3 +73,35 @@ CREATE TABLE post(
     updated_on TIMESTAMP
 );
 success!
+timestamp: 2016-11-30T17:37:40.747143
+CREATE TABLE web2py_session_cmps183(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    locked CHAR(1),
+    client_ip CHAR(64),
+    created_datetime TIMESTAMP,
+    modified_datetime TIMESTAMP,
+    unique_key CHAR(64),
+    session_data BLOB
+);
+success!
+timestamp: 2016-11-30T17:49:03.900228
+ALTER TABLE post ADD description TEXT;
+success!
+timestamp: 2016-11-30T17:57:06.622388
+ALTER TABLE post ADD event_description TEXT;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

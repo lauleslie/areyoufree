@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group" id="form_description">
                     <div>
-                        <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_description" placeholder="Description of the event"></textarea>
+                        <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_event_description" placeholder="Description of the event"></textarea>
                         <span class="help-block"></span>
                     </div>
                 </div>
@@ -96,7 +96,8 @@
                     </div>
                 </div>
                 <div class = "post-content">
-                    ${post.post_content} <br>
+                    Event: ${post.post_content} <br>
+                    Description: ${post.event_description}<br>
                     ${post.user_name}
                     <div> Posted ${post.created_on} </div>
                     <div v-if="post.created_on != post.updated_on">

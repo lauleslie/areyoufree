@@ -12,6 +12,7 @@ import datetime
 db.define_table('post',
                 Field('user_email', default=auth.user.email if auth.user_id else None),
                 Field('post_content', 'text'),
+                Field('event_description', 'text'),
                 Field('created_on', 'datetime', default=datetime.datetime.utcnow()),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
                 )
