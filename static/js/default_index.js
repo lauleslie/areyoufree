@@ -60,7 +60,7 @@ var app = function() {
                 start_date: self.vue.form_start_date,
                 end_date: self.vue.form_end_date,
                 start_time: self.vue.form_start_time,
-                end_time: self.vue.form_end_time
+                end_time: self.vue.form_end_time,
             },
             function (data) {
                 $.web2py.enableElement($("#add_post_submit"));
@@ -94,13 +94,23 @@ var app = function() {
         self.vue.is_editing_post = !self.vue.is_editing_post;
         self.vue.edit_post_id = self.vue.posts[post_idx].id;
         self.vue.form_edit_content = self.vue.posts[post_idx].post_content;
+        self.vue.form_edit_event_description = self.vue.posts[post_idx].event_description;
+        self.vue.form_edit_start_date = self.vue.posts[post_idx].start_date;
+        self.vue.form_edit_end_date = self.vue.posts[post_idx].end_date;
+        self.vue.form_edit_start_time = self.vue.posts[post_idx].start_time;
+        self.vue.form_edit_end_time = self.vue.posts[post_idx].end_time;
     };
 
     self.edit_post = function(post_idx) {
         $.post(edit_post_url,
             {
                 post_content: self.vue.form_edit_content,
-                post_id: self.vue.posts[post_idx].id
+                post_id: self.vue.posts[post_idx].id,
+                event_description: self.vue.form_edit_event_description,
+                start_date: self.vue.form_edit_start_date,
+                end_date: self.vue.form_edit_end_date,
+                start_time: self.vue.form_edit_start_time,
+                end_time: self.vue.form_edit_end_time,
             },
             function(){
                 self.get_posts(self.vue.posts.length)
@@ -127,9 +137,9 @@ var app = function() {
             form_start_date: null,
             form_end_date: null,
             form_start_time: null,
-
+            form_end_time: null,
             form_edit_content: null,
-            user: null
+            user: null,
         },
         methods: {
             get_more: self.get_more,
