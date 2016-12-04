@@ -57,6 +57,7 @@ var app = function() {
             {
                 post_content: self.vue.form_post_content,
                 event_description: self.vue.form_event_description,
+                event_location: self.vue.form_event_location,
                 start_date: self.vue.form_start_date,
                 end_date: self.vue.form_end_date,
                 start_time: self.vue.form_start_time,
@@ -71,6 +72,7 @@ var app = function() {
         self.add_post_button();
         self.vue.form_post_content = "";
         self.vue.form_event_description = "";
+        self.vue.form_event_location = "";
         self.vue.form_start_date = "";
         self.vue.form_end_date = "";
         self.vue.form_start_time = "";
@@ -95,6 +97,7 @@ var app = function() {
         self.vue.edit_post_id = self.vue.posts[post_idx].id;
         self.vue.form_edit_content = self.vue.posts[post_idx].post_content;
         self.vue.form_edit_event_description = self.vue.posts[post_idx].event_description;
+        self.vue.form_edit_event_location = self.vue.posts[post_idx].event_location;
         self.vue.form_edit_start_date = self.vue.posts[post_idx].start_date;
         self.vue.form_edit_end_date = self.vue.posts[post_idx].end_date;
         self.vue.form_edit_start_time = self.vue.posts[post_idx].start_time;
@@ -107,6 +110,7 @@ var app = function() {
                 post_content: self.vue.form_edit_content,
                 post_id: self.vue.posts[post_idx].id,
                 event_description: self.vue.form_edit_event_description,
+                event_location: self.vue.form_edit_event_location,
                 start_date: self.vue.form_edit_start_date,
                 end_date: self.vue.form_edit_end_date,
                 start_time: self.vue.form_edit_start_time,
@@ -134,6 +138,7 @@ var app = function() {
             posts: [],
             form_post_content: null,
             form_event_description: null,
+            form_event_location: null,
             form_start_date: null,
             form_end_date: null,
             form_start_time: null,
