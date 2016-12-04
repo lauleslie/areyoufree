@@ -72,6 +72,7 @@ def get_posts():
                 id = r.id,
                 post_content = r.post_content,
                 event_description = r.event_description,
+                event_location = r.event_location,
                 start_date = r.start_date,
                 end_date = r.end_date,
                 start_time = r.start_time,
@@ -95,7 +96,6 @@ def get_posts():
         has_more=has_more,
         user=user,
     ))
-    
 
 # Note that we need the URL to be signed, as this changes the db.
 @auth.requires_signature(hash_vars=False)
@@ -105,6 +105,7 @@ def add_post():
     p_id = db.post.insert(
         post_content = request.vars.post_content,
         event_description = request.vars.event_description,
+        event_location = request.vars.event_location,
         start_date = request.vars.start_date,
         end_date = request.vars.end_date,
         start_time = request.vars.start_time,
@@ -134,6 +135,7 @@ def edit_post():
     post.update_record()
     post.post_content = request.vars.post_content
     post.event_description = request.vars.event_description
+    post.event_location = request.vars.event_location
     post.start_date = request.vars.start_date
     post.end_date = request.vars.end_date
     post.start_time = request.vars.start_time
