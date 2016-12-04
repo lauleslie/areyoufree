@@ -54,6 +54,7 @@ def pretty_date(time=False):
         return str(day_diff / 30) + " months ago"
     return str(day_diff / 365) + " years ago"
 import time
+
 def get_posts():
     """This controller is used to get the posts.  Follow what we did in lecture 10, to ensure
     that the first time, we get 4 posts max, and each time the "load more" button is pressed,
@@ -132,6 +133,11 @@ def edit_post():
     post.updated_on = datetime.datetime.utcnow()
     post.update_record()
     post.post_content = request.vars.post_content
+    post.event_description = request.vars.event_description
+    post.start_date = request.vars.start_date
+    post.end_date = request.vars.end_date
+    post.start_time = request.vars.start_time
+    post.end_time = request.vars.end_time
     post.update_record()
 
     return response.json(dict())
