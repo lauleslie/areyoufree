@@ -123,8 +123,28 @@ window.onclick = function(event) {
                     <div><br>
                     <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
                         <div>
-                            <input class="form-control string" v-model="form_edit_content" placeholder="post content" type="text"/>
+                            <input class="form-control string" v-model="form_edit_content" placeholder="Event Name" type="text"/>
                             <span class="help-block"></span>
+                        </div>
+                        <div>
+                            <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_edit_event_description" placeholder="Description of the event"></textarea>
+                            <span class="help-block"></span>
+                        </div>
+                        <div>
+                        Start Date: <input type="date" name="start_date" v-model="form_edit_start_date">
+                        <span class="help-block"></span>
+                        </div>
+                        <div>
+                        End Date: <input type="date" name="end_date" v-model="form_edit_end_date">
+                        <span class="help-block"></span>
+                        </div>
+                        <div>
+                        Start Time: <input type="time" name="start_time" v-model="form_edit_start_time">
+                        <span class="help-block"></span>
+                        </div>
+                        <div>
+                        End Time: <input type="time" name="end_time" v-model="form_edit_end_time">
+                        <span class="help-block"></span>
                         </div>
                         <div class="form-group">
                             <div>
@@ -135,8 +155,9 @@ window.onclick = function(event) {
                     </div>
                 </div>
                 <div class = "post-content">
-                    <h3> ${post.post_content}
-                    <small> ${post.event_description}</small> </h3><br>
+                    ${post.post_content}
+                    <br>
+                    <small> ${post.event_description}</small><br>
                     <h1><i class="fa fa-calendar" aria-hidden="true"></i></h1>
                     {{=icon_clock}} ${post.start_date} to ${post.end_date} <br>
                     Time of event: ${post.start_time} to ${post.end_time} <br>
