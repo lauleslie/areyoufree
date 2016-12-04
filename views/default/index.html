@@ -38,22 +38,23 @@ window.onclick = function(event) {
         <form class="modal-content animate" action="action_page.php">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="http://i.imgur.com/4jkCJrA.png" alt="Avatar" class="avatar">
+            <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" class="avatar">
         </div>
 
         <div class="container">
             <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-
+            <input type="username" placeholder="Enter Username" name="uname" required>
+            <br>
             <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
-            
+            <br>
+            <input type="checkbox" checked="checked"> Remember me <br>
             <button type="submit">Login</button>
-            <input type="checkbox" checked="checked"> Remember me
+            <button type="forogt">Sign Up</button>
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">{{=icon_cancel}} Cancel</button>
             <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
         </form>
@@ -70,43 +71,39 @@ window.onclick = function(event) {
         </div>
         <br>
         <div v-if="is_adding_post" id="add_post_div">
-            <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post" style="width: 400px">
+            <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post" style="width: 500px">
                 <div class="form-group">
                     <div>
-                        <input class="form-control string" v-model="form_post_content" placeholder="Event Name" type="text"/>
+                        <input class="form-control string" v-model="form_post_content" placeholder="Title" type="text"/>
                         <span class="help-block"></span>
                     </div>
                 </div>
                 <div class="form-group" id="form_description">
                     <div>
-                        <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_event_description" placeholder="Description of the event"></textarea>
+                        <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_event_description" placeholder="Description of the event (optional)"></textarea>
                         <span class="help-block"></span>
                     </div>
                 </div>
-                <div class="form-group" id="form_startdate">
+                <div class="form-group" id="form_event_location">
                     <div>
-                    Start Date: <input type="date" name="start_date" v-model="form_start_date">
-                    <span class="help-block"></span>
+                        <input class="form-control string" v-model="form_event_location" placeholder="Location (optional)" type="text"/>
+                        <span class="help-block"></span>
                     </div>
                 </div>
-                <div class="form-group" id="form_enddate">
+                <div class="form-group" id="form_date">
                     <div>
-                    End Date: <input type="date" name="end_date" v-model="form_end_date">
+                    {{=icon_calendar_plus}} Start Date: <input type="date" name="start_date" v-model="form_start_date">
+                    to End Date: <input type="date" name="end_date" v-model="form_end_date">
                     <span class="help-block"></span>
                     </div>
-                </div>                
-                <div class="form-group" id="form_starttime">
+                </div>              
+                <div class="form-group" id="form_time">
                     <div>
-                    Start Time: <input type="time" name="start_time" v-model="form_start_time">
+                    {{=icon_clock}} Start Time: <input type="time" name="start_time" v-model="form_start_time">
+                    to End Time: <input type="time" name="end_time" v-model="form_end_time">
                     <span class="help-block"></span>
                     </div>
-                </div>
-                <div class="form-group" id="form_endtime">
-                    <div>
-                    End Time: <input type="time" name="end_time" v-model="form_end_time">
-                    <span class="help-block"></span>
-                    </div>
-                </div>                
+                </div>              
                 <div class="form-group" id="submit_record_row">
                     <div>
                         <input class="btn btn-primary" id="add_post_submit" v-on:click="add_post()" type="button" value="Submit" />
@@ -123,27 +120,25 @@ window.onclick = function(event) {
                     <div><br>
                     <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
                         <div>
-                            <input class="form-control string" v-model="form_edit_content" placeholder="Event Name" type="text"/>
+                            <input class="form-control string" v-model="form_edit_content" placeholder="Title" type="text"/>
                             <span class="help-block"></span>
                         </div>
                         <div>
-                            <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_edit_event_description" placeholder="Description of the event"></textarea>
+                            <textarea class="form-control string" id="no_table_album" name="album" type="text" v-model="form_edit_event_description" placeholder="Description of the event (optional)"></textarea>
                             <span class="help-block"></span>
                         </div>
                         <div>
-                        Start Date: <input type="date" name="start_date" v-model="form_edit_start_date">
+                            <input class="form-control string" v-model="form_edit_event_location" placeholder="Location (optional)" type="text"/>
+                            <span class="help-block"></span>
+                        </div>
+                        <div>
+                        {{=icon_calendar_plus}} Start Date: <input type="date" name="start_date" v-model="form_edit_start_date">
+                        to End Date: <input type="date" name="end_date" v-model="form_edit_end_date">
                         <span class="help-block"></span>
                         </div>
                         <div>
-                        End Date: <input type="date" name="end_date" v-model="form_edit_end_date">
-                        <span class="help-block"></span>
-                        </div>
-                        <div>
-                        Start Time: <input type="time" name="start_time" v-model="form_edit_start_time">
-                        <span class="help-block"></span>
-                        </div>
-                        <div>
-                        End Time: <input type="time" name="end_time" v-model="form_edit_end_time">
+                        {{=icon_clock}} Start Time: <input type="time" name="start_time" v-model="form_edit_start_time">
+                        to End Time: <input type="time" name="end_time" v-model="form_edit_end_time">
                         <span class="help-block"></span>
                         </div>
                         <div class="form-group">
@@ -155,21 +150,20 @@ window.onclick = function(event) {
                     </div>
                 </div>
                 <div class = "post-content">
-                    ${post.post_content}
-                    <br>
-                    <small> ${post.event_description}</small><br>
-                    <h1><i class="fa fa-calendar" aria-hidden="true"></i></h1>
-                    {{=icon_clock}} ${post.start_date} to ${post.end_date} <br>
-                    Time of event: ${post.start_time} to ${post.end_time} <br>
+                    <h2>${post.post_content}{{=icon_calendar}}</h2>
+                    ${post.event_description}<br>
+                    <h4><b>{{=icon_marker}} ${post.event_location}</b></h4>
+                    {{=icon_calendar_o}} ${post.start_date} to ${post.end_date} <br>
+                    {{=icon_clock}} ${post.start_time} to ${post.end_time} <br>
                     <div>
-                    {{=icon_usercircle}} <span class="author">${post.user_name}</span> ${post.created_on} </div> <br>
-                    <div v-if="post.created_on != post.updated_on">
-                          Edited ${post.updated_on}
+                    {{=icon_usercircle}} <span class="author">${post.user_name}</span> posted ${post.created_on} </div>
+                    <div v-if="logged_in && user == post.user_email" align = "right">
+                        <i class="fa fa-trash-o" v-on:click="delete_post(post._idx)"></i>
                     </div>
-                </div>
-                <div v-if="logged_in && user == post.user_email">
-                    <i class="fa fa-trash-o" v-on:click="delete_post(post._idx)"></i>
-                    <i class="fa fa-pencil" v-on:click="edit_post_button(post._idx)"></i>
+                    <div v-if="post.created_on != post.updated_on || logged_in && user == post.user_email">
+                        <i class="fa fa-pencil" v-on:click="edit_post_button(post._idx)"></i>
+                        Edited ${post.updated_on}
+                    </div>
                 </div>
             </div>
         </div>
