@@ -31,8 +31,8 @@ body {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
+input[type=username], input[type=password] {
+    width: 300px;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -48,7 +48,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: auto;
 }
 
 /* Extra styles for the cancel button */
@@ -61,17 +61,18 @@ button {
 /* Center the image and position the close button */
 .imgcontainer {
     text-align: center;
-    margin: 24px 0 12px 0;
+    margin: 24px 0 2px 0;
     position: relative;
 }
 
 img.avatar {
     width: 40%;
-    border-radius: 50%;
 }
 
 .container {
     padding: 16px;
+    width: 40%;
+    height: 100%;
 }
 
 span.psw {
@@ -99,7 +100,7 @@ span.psw {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
@@ -144,3 +145,4 @@ span.psw {
        width: 100%;
     }
 }
+
