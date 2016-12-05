@@ -67,6 +67,7 @@ body {
     font-style: italic;
 }
 
+/*Starting from here is the popup login form*/
 /* Full-width input fields */
 input[type=username], input[type=password] {
     width: 300px;
@@ -181,4 +182,46 @@ span.psw {
     .cancelbtn {
        width: 100%;
     }
+}
+/*CSS code for login form ends here */
+
+@media (min-width:600px) {
+    .sidebar{
+        position: fixed;
+        height: 580px;
+        left: 80px;
+        top: 80px;
+        width: 250px;
+        background: #d8635f;
+        color: #FFFFFF;
+        border-style: solid;
+        border-size: 100px;
+        border-color: #afb4bc;
+        box-shadow: 0 0 10px #9ecaed;
+    }
+}
+
+.copyright{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.side_login_button{
+    padding-left: 10px;
+}
+
+.side_signup_button{
+    padding-left: 10px;
+}
+
+.side_profile_button{
+    padding-left: 10px;
+}
+
+.side_logout_button{
+    padding-left: 10px;
 }
