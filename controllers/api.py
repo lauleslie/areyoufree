@@ -77,6 +77,7 @@ def get_posts():
                 end_date = r.end_date,
                 start_time = r.start_time,
                 end_time = r.end_time,
+                invite_list = r.invite_list,
                 user_email = r.user_email,
                 created_on = pretty_date(r.created_on),
                 user_name = get_user_name_from_email(r.user_email),
@@ -109,7 +110,8 @@ def add_post():
         start_date = request.vars.start_date,
         end_date = request.vars.end_date,
         start_time = request.vars.start_time,
-        end_time = request.vars.end_time
+        end_time = request.vars.end_time,
+        invite_list = request.vars.invite_list
     )
     p = db.post(p_id)
     return response.json(dict(post=p))
@@ -140,6 +142,7 @@ def edit_post():
     post.end_date = request.vars.end_date
     post.start_time = request.vars.start_time
     post.end_time = request.vars.end_time
+    post.invite_list = request.vars.invite_list
     post.update_record()
 
     return response.json(dict())
