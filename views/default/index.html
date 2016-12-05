@@ -1,5 +1,6 @@
 {{extend 'layout.html'}}
 
+<link rel="stylesheet" href="{{=URL('static','css/myapp.css')}}"/>
 {{block head}}
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
@@ -17,56 +18,49 @@
     }
     document.onkeypress = stopEnterKey;
 </script>
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
 {{end}}
 
-<body>
-    <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" height="110" width="330">
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
-    <div id="id01" class="modal">
-        <form class="modal-content animate" action="action_page.php">
-        <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" class="avatar">
-        </div>
-
-        <div class="container">
-            <label><b>Username</b></label>
-            <input type="username" placeholder="Enter Username" name="uname" required>
-            <br>
-            <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            <br>
-            <input type="checkbox" checked="checked"> Remember me <br>
-            <button type="submit">Login</button>
-            <button type="forogt">Sign Up</button>
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">{{=icon_cancel}} Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-        </form>
+<div id="id01" class="modal">
+    <form class="modal-content animate" action="action_page.php">
+    <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" class="avatar">
     </div>
-</body>
+
+    <div class="container">
+        <label><b>Username</b></label>
+        <input type="username" placeholder="Enter Username" name="uname" required>
+        <br>
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <br>
+        <input type="checkbox" checked="checked"> Remember me <br>
+        <button type="submit">Login</button>
+        <button type="forogt">Sign Up</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">{{=icon_cancel}} Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+    </form>
+</div>
+
+<body>
+    <div style="width:800px; margin:0 auto;">
 
 <div class="main_content">
+
+    <div align="center">
+    <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" height="150" width="400">
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+    </div>
 
 	<div id="vue-div" class="display:none">
     <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
         <div class="button_bar">
-            <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'hidden': !logged_in}">{{=icon_add}} Add new event</button>
+            <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'hidden': !logged_in}">{{=icon_add}} Add new event </button>
             <button v-if="is_adding_post" class="btn btn-warning btn-sm" v-on:click="add_post_button()">{{=icon_cancel}} Cancel</button>
         </div>
         <br>
@@ -94,8 +88,8 @@ window.onclick = function(event) {
                     <div>
                     {{=icon_calendar_plus}} Start Date: <input type="date" name="start_date" v-model="form_start_date">
                     to End Date: <input type="date" name="end_date" v-model="form_end_date">
-                    <span class="help-block"></span>
                     </div>
+                    <span class="help-block"></span>
                 </div>              
                 <div class="form-group" id="form_time">
                     <div>
@@ -103,7 +97,13 @@ window.onclick = function(event) {
                     to End Time: <input type="time" name="end_time" v-model="form_end_time">
                     <span class="help-block"></span>
                     </div>
-                </div>              
+                </div>
+                <div class="form-group" id="form_invite">
+                    <div>
+                        <input class="form-control string" v-model="form_invite_list" placeholder="Invite" type="text"/>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
                 <div class="form-group" id="submit_record_row">
                     <div>
                         <input class="btn btn-primary" id="add_post_submit" v-on:click="add_post()" type="button" value="Submit" />
@@ -132,14 +132,18 @@ window.onclick = function(event) {
                             <span class="help-block"></span>
                         </div>
                         <div>
-                        {{=icon_calendar_plus}} Start Date: <input type="date" name="start_date" v-model="form_edit_start_date">
-                        to End Date: <input type="date" name="end_date" v-model="form_edit_end_date">
-                        <span class="help-block"></span>
+                            {{=icon_calendar_plus}} Start Date: <input type="date" name="start_date" v-model="form_edit_start_date">
+                            to End Date: <input type="date" name="end_date" v-model="form_edit_end_date">
+                            <span class="help-block"></span>
                         </div>
                         <div>
-                        {{=icon_clock}} Start Time: <input type="time" name="start_time" v-model="form_edit_start_time">
-                        to End Time: <input type="time" name="end_time" v-model="form_edit_end_time">
-                        <span class="help-block"></span>
+                            {{=icon_clock}} Start Time: <input type="time" name="start_time" v-model="form_edit_start_time">
+                            to End Time: <input type="time" name="end_time" v-model="form_edit_end_time">
+                            <span class="help-block"></span>
+                        </div>
+                        <div>
+                            <input class="form-control string" v-model="form_edit_invite_list" placeholder="Invite" type="text"/>
+                            <span class="help-block"></span>
                         </div>
                         <div class="form-group">
                             <div>
@@ -155,6 +159,7 @@ window.onclick = function(event) {
                     <h4><b>{{=icon_marker}} ${post.event_location}</b></h4>
                     {{=icon_calendar_o}} ${post.start_date} to ${post.end_date} <br>
                     {{=icon_clock}} ${post.start_time} to ${post.end_time} <br>
+                    Invited ${post.invite_list}<br>
                     <div>
                     {{=icon_usercircle}} <span class="author">${post.user_name}</span> posted ${post.created_on} </div>
                     <div v-if="logged_in && user == post.user_email" align = "right">
@@ -175,5 +180,8 @@ window.onclick = function(event) {
     </div>
 
 </div>
+</body>
+    </div>
+</body>
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
