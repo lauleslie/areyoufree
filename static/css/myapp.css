@@ -7,15 +7,34 @@ body {
 .main_content{
     background-color: white;
     text-align:left;
+    border-style: solid;
+    border-size: 100px;
+    border-color: #afb4bc;
+    box-shadow: 0 0 10px #9ecaed;
 }
 
-.button_bar{
+.add_button{
+    width: 760px;
+    margin: 0 auto;
+}
+
+.cancel_button{
     width: 530px;
+    margin: 0 auto;
+}
+
+.edit-button{
+    width: 500px;
     margin: 0 auto;
 }
 
 .form-horizontal{
     width: 300px;
+    margin: 0 auto;
+}
+
+.form-edit-horizontal{
+    width: 400px;
     margin: 0 auto;
 }
 
@@ -43,8 +62,9 @@ body {
 }
 
 .author {
-    color: #55627f;
+    color: #7f858e;
     font-weight: bold;
+    font-style: italic;
 }
 
 /* Full-width input fields */
