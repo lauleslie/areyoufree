@@ -50,9 +50,8 @@
   <body>
     <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
     <div class="w2p_flash alert alert-dismissable">{{=response.flash or ''}}</div>
-    <!-- Navbar ======================================= -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #fff;
-        border-bottom: 0px;">
+    <!-- Navbar ======================================= 
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="width:600px" display="inline-block">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -60,9 +59,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          <!--{{=response.logo or ''}}-->
-            <img src="http://i.imgur.com/lRlZM5J.png" height="65px"/>
+          </button>-->
+          <!--{{=response.logo or ''}}
+          <a href="#"><img src="http://i.imgur.com/lRlZM5J.png" height="65px"/></a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -73,7 +72,7 @@
           {{pass}}
         </div>
       </div>
-    </nav>
+    </nav>-->
     <!-- Masthead ===================================== -->
     {{block header}}
     {{end}}
@@ -106,17 +105,20 @@
 
     </div>
 
-    {{block footer}} <!-- this is default footer -->
+    <!--{{block footer}}--> <!-- this is default footer 
     <footer class="footer">
       <div class="container-fluid">
-        <div class="copyright pull-left"><small>{{=T('Copyright')}} &#169; {{=request.now.year}}</small></div>
+        <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
           <div id="poweredBy" class="pull-right">
-            <small>{{=T('Powered by')}}</small>
+          Created by Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui-->
+          <!--
+            {{=T('Powered by')}}
             <a href="http://www.web2py.com/">web2py</a>
+          --><!--
           </div>
       </div>
     </footer>
-    {{end}}
+    {{end}}-->
     <!-- The javascript =============================== -->
     <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
     <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
@@ -130,5 +132,7 @@
       });
     </script>
     {{pass}}
+    <!-- Share ============================y============ -->
+    <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
   </body>
 </html>
