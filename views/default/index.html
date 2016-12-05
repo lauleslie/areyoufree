@@ -59,8 +59,10 @@
 
 	<div id="vue-div" class="display:none">
     <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
-        <div class="button_bar">
+        <div class="add_button">
             <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'hidden': !logged_in}">{{=icon_add}} Add new event </button>
+        </div>
+        <div class="cancel_button">
             <button v-if="is_adding_post" class="btn btn-warning btn-sm" v-on:click="add_post_button()">{{=icon_cancel}} Cancel</button>
         </div>
         <br>
@@ -116,9 +118,11 @@
         <div v-for="post in posts">
             <div class="post">
                 <div v-if="is_editing_post && post.id == edit_post_id">
-                    <button class="btn btn-warning btn-sm" v-on:click="edit_post_button(post._idx)">{{=icon_cancel}} Cancel</button> 
+                    <div class="edit-button">
+                    <button class="btn btn-warning btn-sm" v-on:click="edit_post_button(post._idx)">{{=icon_cancel}} Cancel</button>
+                    </div>
                     <div><br>
-                    <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
+                    <form action="#" v-on:submit.prevent="add_post" class="form-edit-horizontal" enctype="multipart/form-data" method="post" style="width: 500px">
                         <div>
                             <input class="form-control string" v-model="form_edit_content" placeholder="Title" type="text"/>
                             <span class="help-block"></span>
@@ -154,14 +158,14 @@
                     </div>
                 </div>
                 <div class = "post-content">
-                    <h2>${post.post_content}{{=icon_calendar}}</h2>
+                    <h2><b>${post.post_content}{{=icon_calendar}}</b></h2>
+                    <div>
+                    {{=icon_usercircle}} <span class="author">${post.user_name} posted ${post.created_on}</span></div>
                     ${post.event_description}<br>
                     <h4><b>{{=icon_marker}} ${post.event_location}</b></h4>
                     {{=icon_calendar_o}} ${post.start_date} to ${post.end_date} <br>
                     {{=icon_clock}} ${post.start_time} to ${post.end_time} <br>
-                    Invited ${post.invite_list}<br>
-                    <div>
-                    {{=icon_usercircle}} <span class="author">${post.user_name}</span> posted ${post.created_on} </div>
+                    Invited ${post.invite_list}
                     <div v-if="logged_in && user == post.user_email" align = "right">
                         <i class="fa fa-trash-o" v-on:click="delete_post(post._idx)"></i>
                     </div>
