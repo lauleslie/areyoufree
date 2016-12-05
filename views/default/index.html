@@ -18,9 +18,29 @@
     }
     document.onkeypress = stopEnterKey;
 </script>
+
 {{end}}
 
+<div class="sidebar">
+    <div class = "side_login_button">
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+    </div>
+    <div class = "side_signup_button">
+        <button type="signup">Sign Up</button>
+    </div>
+    <div class = "side_profile_button">
+        <button type="profile">Profile</button>
+    </div>
+    <div class = "side_logout_button">
+        <button type="logout">Log Out</button>
+    </div>
+    <div class="copyright">
+        Copyright © 2016<br>
+        Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui
+    </div>
+</div>
 
+<!-- Use for reference for sidebar ^-->
 <div id="id01" class="modal">
     <form class="modal-content animate" action="action_page.php">
     <div class="imgcontainer">
@@ -37,7 +57,7 @@
         <br>
         <input type="checkbox" checked="checked"> Remember me <br>
         <button type="submit">Login</button>
-        <button type="forogt">Sign Up</button>
+        <button type="forgot">Sign Up</button>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
@@ -47,6 +67,7 @@
     </form>
 </div>
 
+
 <body>
     <div style="width:800px; margin:0 auto;">
 
@@ -54,7 +75,6 @@
 
     <div align="center">
     <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" height="150" width="400">
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
     </div>
 
 	<div id="vue-div" class="display:none">
