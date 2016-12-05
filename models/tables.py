@@ -18,6 +18,7 @@ db.define_table('post',
                 Field('end_date', 'date'),
                 Field('start_time', 'time'),
                 Field('end_time', 'time'),
+                Field('invite_list', 'list:string'),
                 Field('created_on', 'datetime', default=datetime.datetime.utcnow()),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
                 )
