@@ -1,33 +1,50 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #556180;
+}
+
+
+.main_content{
+    background-color: white;
+    text-align:left;
+}
+
+.button_bar{
+    width: 530px;
+    margin: 0 auto;
+}
+
+.form-horizontal{
+    width: 300px;
+    margin: 0 auto;
 }
 
 .fa-calendar {
-  float: right;
-  color: #d75452;
+    float: right;
+    color: #d75452;
 
 }
 /* line 2, ../sass/_main.scss */
 .post_listing {
-  margin: 10px 0px 10px 0px;
-  padding: 0 0 0 0px;
+    margin: 10px 0px 10px 0px;
+    padding: 0 0 0 0px;
 }
 
 /* line 7, ../sass/_main.scss */
 .post_list {
-  padding-top: 10px;
+    padding-top: 0px;
 }
 
 /* line 11, ../sass/_main.scss */
 .post {
-  border-bottom: 1px solid #eeeeee;
-  margin: 20px 0px 20px 0px;
-  padding: 20px;
+    border-bottom: 1px solid #eeeeee;
+    margin: 10px 0px 10px 0px;
+    padding: 0px 20px 20px 20px;
 }
 
 .author {
-  color: #55627f;
-  font-weight: bold;
+    color: #55627f;
+    font-weight: bold;
 }
 
 /* Full-width input fields */
@@ -145,4 +162,3 @@ span.psw {
        width: 100%;
     }
 }
-
