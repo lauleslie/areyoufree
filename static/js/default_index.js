@@ -62,6 +62,7 @@ var app = function() {
                 end_date: self.vue.form_end_date,
                 start_time: self.vue.form_start_time,
                 end_time: self.vue.form_end_time,
+                invite_list: self.vue.form_invite_list,
             },
             function (data) {
                 $.web2py.enableElement($("#add_post_submit"));
@@ -77,6 +78,7 @@ var app = function() {
         self.vue.form_end_date = "";
         self.vue.form_start_time = "";
         self.vue.form_end_time = "";
+        self.vue.form_invite_list = "";
 
     };
 
@@ -102,6 +104,7 @@ var app = function() {
         self.vue.form_edit_end_date = self.vue.posts[post_idx].end_date;
         self.vue.form_edit_start_time = self.vue.posts[post_idx].start_time;
         self.vue.form_edit_end_time = self.vue.posts[post_idx].end_time;
+        self.vue.form_edit_invite_list = self.vue.posts[post_idx].invite_list;
     };
 
     self.edit_post = function(post_idx) {
@@ -115,6 +118,7 @@ var app = function() {
                 end_date: self.vue.form_edit_end_date,
                 start_time: self.vue.form_edit_start_time,
                 end_time: self.vue.form_edit_end_time,
+                invite_list: self.vue.form_edit_invite_list,
             },
             function(){
                 self.get_posts(self.vue.posts.length)
@@ -143,6 +147,7 @@ var app = function() {
             form_end_date: null,
             form_start_time: null,
             form_end_time: null,
+            form_invite_list: null,
             form_edit_content: null,
             user: null,
         },
