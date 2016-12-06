@@ -225,3 +225,7 @@ span.psw {
 .side_logout_button{
     padding-left: 10px;
 }
+
+.event_grid {
+    background-color: white;
+}
