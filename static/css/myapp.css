@@ -251,17 +251,23 @@ span.psw {
 }
 
 .eventheader, .eventfooter {
-    background-color: #1b8dbb;
+    background-color: #EEE;
     padding: 10px;
+    min-height: 75px;
 }
 
 .eventheader {
     font-size: 20px;
 }
 
+.eventheader p {
+    font-size: 15px;
+}
+
 .calinfo th {
     font-size: 15px;
     padding: 5px;
+    background-color: #EEE;
 }
 
 .calinfo td { padding: 5px; }
@@ -272,6 +278,7 @@ span.psw {
     width: 150px;
     border-right: 1px solid #EEE;
     padding: 10px;
+    color: #FFF;
 }
 
 .calinfo {
