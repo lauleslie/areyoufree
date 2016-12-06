@@ -13,13 +13,15 @@
 <div id="vue-div" class="display:none">
   <div class="eventcontainer">
 
-      <div class="eventheader">insert event name
-
-
+      <div class="eventheader">Event Name <br>
+      <p><em>hosted by</em> {{=icon_usercircle}}<br></p>
+      <br> {{=icon_marker}} <br>
+      {{=icon_calendar_o}}<br>
+      {{=icon_clock}}
       </div>
+
       <div class="attendinfo">
-          attendees will <br>
-          go here
+        Invited:
       </div>
 
       <div class="calinfo">
@@ -72,7 +74,10 @@
       <button v-on:click="show_intervals({{=width}}, {{=height}})" v-on:load="load_grid()">show/hide 30 min interval</button>
       </div>
 
- <div class="eventfooter">insert copyright info</div>
+ <div class="eventfooter">
+     <span class="pull-right">Copyright &copy; 2016</span>
+     <span class="pull-left"><em>Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui</em></span>
+ </div>
   </div>
   
 <!--
