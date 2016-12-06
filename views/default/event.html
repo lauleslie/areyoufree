@@ -10,10 +10,20 @@
   
 
 {{end}}
-
 <div id="vue-div" class="display:none">
-  
- 
+  <div class="eventcontainer">
+
+      <div class="eventheader">insert event name
+
+
+      </div>
+      <div class="attendinfo">
+          attendees will <br>
+          go here
+      </div>
+
+      <div class="calinfo">
+
   <table border="1" class="event_grid">
     <thead>
       {{for x in range(0, width + 1): }}
@@ -52,7 +62,6 @@
           
         {{pass}}
       </tr>
-      
 
     {{pass}}
 
@@ -60,13 +69,11 @@
     </tbody>
     
   </table>
+      <button v-on:click="show_intervals({{=width}}, {{=height}})" v-on:load="load_grid()">show/hide 30 min interval</button>
+      </div>
 
-
-  <button v-on:click="show_intervals({{=width}}, {{=height}})" v-on:load="load_grid()">show/hide 30 min interval</button>
-
-
-
-
+ <div class="eventfooter">insert copyright info</div>
+  </div>
   
 <!--
     <table border="1">
@@ -89,11 +96,3 @@
  -->
 
 </div>
-  
-
- 
-
-
-
-
-
