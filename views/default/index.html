@@ -40,6 +40,21 @@
         Copyright © 2016<br>
         Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui
     </div>
+<<<<<<< HEAD
+=======
+
+
+</div>
+-->
+
+<!-- Use for reference for sidebar ^-->
+<div id="id01" class="modal">
+    <form class="modal-content animate" action="action_page.php">
+    <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" class="avatar">
+    </div>
+>>>>>>> master
 
 
 </div>
@@ -91,7 +106,7 @@
                     to End Date: <input type="date" name="end_date" v-model="form_end_date">
                     </div>
                     <span class="help-block"></span>
-                </div>              
+                </div>
                 <div class="form-group" id="form_time">
                     <div>
                     {{=icon_clock}} Start Time: <input type="time" name="start_time" v-model="form_start_time">
@@ -113,7 +128,7 @@
                 </div>
             </form>
         </div>
-        
+
         <div v-for="post in posts">
             <div class="post">
                 <div v-if="is_editing_post && post.id == edit_post_id">
@@ -178,7 +193,7 @@
 
         <div v-if="has_more" class="show_more">
             <div id="whitespace">
-            <button class="btn btn-danger btn-sm" v-on:click="get_more()">Load more</button>
+            <button class="btn btn-danger btn-sm" v-on:click="get_more()">Load more events</button>
             </div>
         </div>
 

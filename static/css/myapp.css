@@ -3,7 +3,9 @@ body {
     background-color: #556180;
 }
 
-
+a:hover {
+    color: #333;
+}
 .main_content{
     background-color: white;
     text-align:left;
@@ -187,10 +189,6 @@ span.psw {
 
 @media (min-width:600px) {
     .sidebar{
-        position: fixed;
-        height: 580px;
-        left: 80px;
-        top: 80px;
         width: 250px;
         background: #d8635f;
         color: #FFFFFF;
@@ -210,6 +208,19 @@ span.psw {
     padding-bottom: 10px;
 }
 
+#whitespace {
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+#bottombar {
+    padding: 10px;
+    background-color: #d8635f;
+    color: #fff;
+    font-size: 10px;
+    height: 50px;
+}
+
 .side_login_button{
     padding-left: 10px;
 }
@@ -225,7 +236,55 @@ span.psw {
 .side_logout_button{
     padding-left: 10px;
 }
+/* event calendar page styling*/
 
 .event_grid {
     background-color: white;
+}
+
+.event_grid table {
+    padding: 100px;
+}
+
+.eventcontainer {
+    background-color: #FFF;
+    width: 90%;
+    align: center;
+}
+
+.eventheader, .eventfooter {
+    background-color: #EEE;
+    padding: 10px;
+    min-height: 75px;
+}
+
+.eventheader {
+    font-size: 20px;
+}
+
+.eventheader p {
+    font-size: 15px;
+}
+
+.calinfo th {
+    font-size: 15px;
+    padding: 5px;
+    background-color: #EEE;
+}
+
+.calinfo td { padding: 5px; }
+
+.attendinfo {
+    background-color: #d8635f;
+    float: left;
+    width: 150px;
+    border-right: 1px solid #EEE;
+    padding: 10px;
+    color: #FFF;
+}
+
+.calinfo {
+    background-color: #FFF;
+    margin-left: 150px;
+    padding: 10px;
 }

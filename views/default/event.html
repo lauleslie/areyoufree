@@ -10,7 +10,6 @@
 
 {{end}}
 
-
 <div id="vue-div" class="display:none">
   <div class="eventcontainer">
 
@@ -26,20 +25,19 @@
         Invited: ${invite_list}
       </div>
 
-
       <div class="calinfo">
 
   <table border="1" class="event_grid">
     <thead>
       {{for x in range(0, width + 1): }}
-        <th>{{=date_convert(start_month, start_day + x, start_year)}}</th>  
+        <th>{{=date_convert(start_month, start_day + x, start_year)}}</th>
       {{pass}}
 
     </thead>
-    
+
     <tbody id="table">
       {{for x in range(0,height + 1): }}
-      
+
       <tr id="{{=x}} 00">
         {{for y in range(0,width + 1): }}
 
@@ -48,7 +46,7 @@
           </td>
 
 
-          
+
         {{pass}}
       </tr>
 
@@ -64,7 +62,7 @@
             <div id="n {{=x}} {{=y}} 30"style="display: inline; float: right; padding-right: 5px;">{{=x * (width + 1) + y}}</div>
           </td>
 
-          
+
         {{pass}}
       </tr>
 
@@ -72,7 +70,7 @@
 
 
     </tbody>
-    
+
   </table>
       <button v-on:click="show_intervals({{=width}}, {{=height}})" v-on:load="load_grid()">show/hide 30 min interval</button>
       </div>
@@ -82,11 +80,11 @@
      <span class="pull-left"><em>Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui</em></span>
  </div>
   </div>
-  
+
 <!--
     <table border="1">
     <div v-for="x in width">
-      <th>day ${x}</th> 
+      <th>day ${x}</th>
 
     </div>
 
@@ -98,7 +96,7 @@
         </div>
       </tr>
     </div>
-      
+
 
   </table>
  -->
