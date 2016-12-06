@@ -102,12 +102,9 @@ def get_grid():
     post_id = request.vars.post_id
     #logger.info(post_id)
 
-    if auth.user is None:
-        session.flash = T('not logged in')
-        redirect(URL("default", "index"))
+    
 
-    q = ((db.post.user_email == auth.user.email) &
-             (db.post.id == post_id))
+    q = (db.post.id == post_id)
     post = db(q).select().first()
 
     if post is None:
@@ -121,6 +118,9 @@ def get_grid():
         id=request.vars.id,
         width=xy['width'],
         height=xy['height'],
+        invite_list=post.invite_list,
+        user_email=auth.user.email,
+        author_email=post.user_email,
         
     ))
 
@@ -146,7 +146,7 @@ def convert_times(start_day1, end_day1, start_time1, end_time1):
     return dict(height=height, width=width)
     
 
-def grid_tostring(start_day1, end_day1, start_time1, end_time1):
+def grid_tostring(start_day1, end_day1, start_time1, end_time1, invitelist):
     from datetime import datetime as dt, date, time
 
     start_day = dt.strptime(start_day1, "%Y-%m-%d")
@@ -175,26 +175,28 @@ def grid_tostring(start_day1, end_day1, start_time1, end_time1):
 
     #logger.info("height = " + str(height) + " width = " + str(width))
     grid_stringlist = []
-    invitelist_size = 1
+
+    invite_list = invitelist.split(", ")
+    logger.info(invite_list)
     
     for x in range(0, height + 1):
         for y in range(0, width + 1):
             temp1 = ""
             temp2 = ""
-            for z in range(0, invitelist_size):
+            for z in range(0, len(invite_list) + 1):
                 temp1 += "0"
                 temp2 += "0"
             grid_stringlist.insert((y * width + x), temp1 + " " + temp2)
     #logger.info(len(grid_stringlist))
-    #logger.info(grid_stringlist[98])
+    logger.info(grid_stringlist)
 
+    
     return grid_stringlist
 
 
 def update_grid():
     
-    q = ((db.post.user_email == auth.user.email) &
-            (db.post.id == request.vars.id)) 
+    q = (db.post.id == request.vars.id)
     post = db(q).select().first()
 
     event_grid = request.vars.event_grid.split(',')[1:]
@@ -210,7 +212,7 @@ def update_grid():
 def add_post():
     """Here you get a new post and add it.  Return what you want."""
     # Implement me!
-    grid_stringlist = grid_tostring(request.vars.start_date, request.vars.end_date, request.vars.start_time, request.vars.end_time)
+    grid_stringlist = grid_tostring(request.vars.start_date, request.vars.end_date, request.vars.start_time, request.vars.end_time, request.vars.invite_list)
 
     p_id = db.post.insert(
         post_content = request.vars.post_content,
@@ -243,7 +245,7 @@ def edit_post():
             (db.post.id == request.vars.post_id)) 
     post = db(q).select().first()
 
-    grid_stringlist = grid_tostring(request.vars.start_date, request.vars.end_date, request.vars.start_time, request.vars.end_time)
+    grid_stringlist = grid_tostring(request.vars.start_date, request.vars.end_date, request.vars.start_time, request.vars.end_time, request.vars.invite_list)
 
     post.updated_on = datetime.datetime.utcnow()
     post.update_record()

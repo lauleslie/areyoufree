@@ -65,13 +65,25 @@ def event():
         session.flash = T('not logged in')
         redirect(URL("default", "index"))
 
-    q = ((db.post.user_email == auth.user.email) &
-             (db.post.id == post_id))
+    q = (db.post.id == post_id)
     post = db(q).select().first()
 
-    if post is None:
-        session.flash = T('not authorized')
-        redirect(URL("default", "index"))
+    invited = False
+
+    
+
+    if auth.user.email != post.user_email:
+
+        for email in post.invite_list.split(", "):
+            logger.info(email)
+            if auth.user.email == email:
+                invited = True
+
+        if not (invited):
+            session.flash = T('youre not invited')
+            redirect(URL("default", "index"))
+
+    
 
 
     start_day = post.start_date
@@ -142,5 +154,3 @@ def call():
     supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
     """
     return service()
-
-
