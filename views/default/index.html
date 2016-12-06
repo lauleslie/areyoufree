@@ -8,6 +8,7 @@
     var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
     var del_post_url = "{{=URL('api', 'del_post', user_signature=True)}}";
     var edit_post_url = "{{=URL('api', 'edit_post', user_signature=True)}}";
+    var get_grid_url = "{{=URL('api', 'get_grid', user_signature=True)}}";
 </script>
 <script type="text/javascript">
     // Disables 'Enter' key. Must click submit button.
@@ -18,6 +19,7 @@
     }
     document.onkeypress = stopEnterKey;
 </script>
+
 
 {{end}}
 
@@ -178,7 +180,7 @@
                     </div>
                 </div>
                 <div class = "post-content">
-                    <h2><b>${post.post_content}{{=icon_calendar}}</b></h2>
+                    <h2><b>${post.post_content}<i v-on:click="to_grid(post.id)">{{=icon_calendar}}</i></b></h2>
                     <div>
                     {{=icon_usercircle}} <span class="author">${post.user_name} posted ${post.created_on}</span></div>
                     ${post.event_description}<br>

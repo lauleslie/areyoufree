@@ -1,0 +1,99 @@
+{{extend 'layout.html'}}
+
+{{block head}}
+  <script src="{{=URL('static', 'js/vue.js')}}"></script>
+  <script src="{{=URL('static', 'js/default_event.js')}}"></script>
+  <script>
+    var get_grid = "{{=URL('api', 'get_grid', vars=dict(post_id=id))}}";
+    var update_grid_url = "{{=URL('api', 'update_grid', vars=dict(id=id))}}";
+  </script>
+  
+
+{{end}}
+
+<div id="vue-div" class="display:none">
+  
+ 
+  <table border="1" class="event_grid">
+    <thead>
+      {{for x in range(0, width + 1): }}
+        <th>{{=date_convert(start_month, start_day + x, start_year)}}</th>  
+      {{pass}}
+
+    </thead>
+    
+    <tbody id="table">
+      {{for x in range(0,height + 1): }}
+      
+      <tr id="{{=x}} 00">
+        {{for y in range(0,width + 1): }}
+
+          <td id="{{=x}} {{=y}} 00" v-on:click="change_color('{{=x}}', '{{=y}}', '00', {{=width}}, {{=id}})">
+            {{=start_time + x}}:00 <div id="n {{=x}} {{=y}} 00"style="display: inline; float: right; padding-right: 5px;">{{=x * (width + 1) + y}}</div>
+          </td>
+
+
+          
+        {{pass}}
+      </tr>
+
+      <tr id="{{=x}} 30" >
+        {{for y in range(0,width + 1): }}
+
+          <script type="text/javascript">
+            var id = "{{=x}} {{=y}}";
+          </script>
+
+          <td id="{{=x}} {{=y}} 30" v-on:click="change_color('{{=x}}', '{{=y}}', '30', {{=width}})" >
+            {{=start_time + x}}:30
+            <div id="n {{=x}} {{=y}} 30"style="display: inline; float: right; padding-right: 5px;">{{=x * (width + 1) + y}}</div>
+          </td>
+
+          
+        {{pass}}
+      </tr>
+      
+
+    {{pass}}
+
+
+    </tbody>
+    
+  </table>
+
+
+  <button v-on:click="show_intervals({{=width}}, {{=height}})" v-on:load="load_grid()">show/hide 30 min interval</button>
+
+
+
+
+  
+<!--
+    <table border="1">
+    <div v-for="x in width">
+      <th>day ${x}</th> 
+
+    </div>
+
+    <div v-for="x in width">
+      <tr>
+        <div v-for="y in height">
+          <td v-on:click="change_color()"> time = </td>
+
+        </div>
+      </tr>
+    </div>
+      
+
+  </table>
+ -->
+
+</div>
+  
+
+ 
+
+
+
+
+
