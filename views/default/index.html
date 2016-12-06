@@ -40,6 +40,8 @@
         Copyright © 2016<br>
         Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui
     </div>
+<<<<<<< HEAD
+=======
 
 
 </div>
@@ -52,25 +54,13 @@
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" class="avatar">
     </div>
+>>>>>>> master
 
-    <div class="container">
-        <label><b>Username</b></label>
-        <input type="username" placeholder="Enter Username" name="uname" required>
-        <br>
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <br>
-        <input type="checkbox" checked="checked"> Remember me <br>
-        <button type="submit">Login</button>
-        <button type="forgot">Sign Up</button>
-    </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">{{=icon_cancel}} Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-    </form>
 </div>
+-->
+
+<!-- Use for reference for sidebar ^-->
 
 
 <body>
@@ -81,7 +71,7 @@
     <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" height="150" width="400">
     </div>
 
-	<div id="vue-div" class="display:none">
+    <div id="vue-div" class="display:none">
     <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
         <div class="add_button">
             <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'hidden': !logged_in}">{{=icon_add}} Add new event </button>
@@ -116,7 +106,7 @@
                     to End Date: <input type="date" name="end_date" v-model="form_end_date">
                     </div>
                     <span class="help-block"></span>
-                </div>              
+                </div>
                 <div class="form-group" id="form_time">
                     <div>
                     {{=icon_clock}} Start Time: <input type="time" name="start_time" v-model="form_start_time">
@@ -138,7 +128,7 @@
                 </div>
             </form>
         </div>
-        
+
         <div v-for="post in posts">
             <div class="post">
                 <div v-if="is_editing_post && post.id == edit_post_id">

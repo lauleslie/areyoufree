@@ -7,21 +7,22 @@
     var get_grid = "{{=URL('api', 'get_grid', vars=dict(post_id=id))}}";
     var update_grid_url = "{{=URL('api', 'update_grid', vars=dict(id=id))}}";
   </script>
-  
 
 {{end}}
+
 <div id="vue-div" class="display:none">
   <div class="eventcontainer">
 
-      <div class="eventheader">Event Name <br>
-      <p><em>hosted by</em> {{=icon_usercircle}}<br></p>
-      <br> {{=icon_marker}} <br>
-      {{=icon_calendar_o}}<br>
-      {{=icon_clock}}
+      <div class="eventheader">${name} <br>
+      <p>{{=icon_usercircle}} <em>hosted by: </em>${author_name}<br></p>
+      <p>${event_description}</p>
+      {{=icon_marker}} ${location}<br>
+      {{=icon_calendar_o}} ${start_date} to ${end_date}<br>
+      {{=icon_clock}} ${start_time} to ${end_time}
       </div>
 
       <div class="attendinfo">
-        Invited:
+        Invited: ${invite_list}
       </div>
 
       <div class="calinfo">
@@ -29,14 +30,14 @@
   <table border="1" class="event_grid">
     <thead>
       {{for x in range(0, width + 1): }}
-        <th>{{=date_convert(start_month, start_day + x, start_year)}}</th>  
+        <th>{{=date_convert(start_month, start_day + x, start_year)}}</th>
       {{pass}}
 
     </thead>
-    
+
     <tbody id="table">
       {{for x in range(0,height + 1): }}
-      
+
       <tr id="{{=x}} 00">
         {{for y in range(0,width + 1): }}
 
@@ -45,7 +46,7 @@
           </td>
 
 
-          
+
         {{pass}}
       </tr>
 
@@ -61,7 +62,7 @@
             <div id="n {{=x}} {{=y}} 30"style="display: inline; float: right; padding-right: 5px;">{{=x * (width + 1) + y}}</div>
           </td>
 
-          
+
         {{pass}}
       </tr>
 
@@ -69,21 +70,21 @@
 
 
     </tbody>
-    
+
   </table>
       <button v-on:click="show_intervals({{=width}}, {{=height}})" v-on:load="load_grid()">show/hide 30 min interval</button>
       </div>
 
  <div class="eventfooter">
-     <span class="pull-right">Copyright &copy; 2016</span>
+     <span class="pull-right">&copy; 2016 AreYouFree?</span>
      <span class="pull-left"><em>Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui</em></span>
  </div>
   </div>
-  
+
 <!--
     <table border="1">
     <div v-for="x in width">
-      <th>day ${x}</th> 
+      <th>day ${x}</th>
 
     </div>
 
@@ -95,7 +96,7 @@
         </div>
       </tr>
     </div>
-      
+
 
   </table>
  -->
