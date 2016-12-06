@@ -114,7 +114,8 @@ def event():
     #matrix = [[0 for y in range(end_time - start_time)] for x in range(end_day - start_day)]
 
 
-    return dict(height=height, width=width, start_time=start, start_day=start_day.day, start_month=start_day.month, start_year=start_day.year, date_convert=date_convert, id=post_id)
+    return dict(height=height, width=width, start_time=start, start_day=start_day.day, start_month=start_day.month, 
+        start_year=start_day.year, date_convert=date_convert, id=post_id,)
 
 
 
