@@ -40,6 +40,8 @@
         Copyright © 2016<br>
         Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui
     </div>
+
+
 </div>
 
 <!-- Use for reference for sidebar ^-->
@@ -200,8 +202,15 @@
         </div>
 
         <div v-if="has_more" class="show_more">
-            <button class="btn btn-default" v-on:click="get_more()">Load more</button>
-        </div> 
+            <div id="whitespace">
+            <button class="btn btn-danger btn-sm" v-on:click="get_more()">Load more events</button>
+            </div>
+        </div>
+
+        <div id="bottombar">
+            <span class="pull-right">Copyright &copy; 2016</span>
+            <span class="pull-left"><em>Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui</em></span>
+        </div>
 
     </div>
 
