@@ -15,6 +15,17 @@ a:hover {
     box-shadow: 0 0 10px #9ecaed;
 }
 
+#navbar {
+  padding: 5px;
+  background-color: #FFFFFF;
+  border-bottom: 0px;
+  opacity: 0.9;
+}
+
+#navbar a {
+  color: #556180;
+}
+
 .add_button{
     width: 760px;
     margin: 0 auto;
@@ -166,12 +177,12 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
+    from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
 }
-    
+
 @keyframes animatezoom {
-    from {transform: scale(0)} 
+    from {transform: scale(0)}
     to {transform: scale(1)}
 }
 
