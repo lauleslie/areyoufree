@@ -128,6 +128,10 @@ var app = function() {
 
     };
 
+    self.to_grid = function(id) {
+        window.location = "/areyoufree/default/event/?id=" + id;
+    };
+
     // Complete as needed.
     self.vue = new Vue({
         el: "#vue-div",
@@ -157,7 +161,8 @@ var app = function() {
             add_post: self.add_post,
             delete_post: self.delete_post,
             edit_post: self.edit_post,
-            edit_post_button: self.edit_post_button
+            edit_post_button: self.edit_post_button,
+            to_grid: self.to_grid
         }
 
     });
