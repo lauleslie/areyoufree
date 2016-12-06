@@ -23,7 +23,7 @@
 
 {{end}}
 
-<div class="sidebar">
+<!--<div class="sidebar">
     <div class = "side_login_button">
         <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
     </div>
@@ -40,46 +40,23 @@
         Copyright © 2016<br>
         Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui
     </div>
+
+
 </div>
+-->
 
 <!-- Use for reference for sidebar ^-->
-<div id="id01" class="modal">
-    <form class="modal-content animate" action="action_page.php">
-    <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" class="avatar">
-    </div>
-
-    <div class="container">
-        <label><b>Username</b></label>
-        <input type="username" placeholder="Enter Username" name="uname" required>
-        <br>
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <br>
-        <input type="checkbox" checked="checked"> Remember me <br>
-        <button type="submit">Login</button>
-        <button type="forgot">Sign Up</button>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">{{=icon_cancel}} Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-    </form>
-</div>
 
 
 <body>
     <div style="width:800px; margin:0 auto;">
 
 <div class="main_content">
-
     <div align="center">
     <img src="http://i.imgur.com/lRlZM5J.png" alt="logo" height="150" width="400">
     </div>
 
-	<div id="vue-div" class="display:none">
+    <div id="vue-div" class="display:none">
     <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
         <div class="add_button">
             <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'hidden': !logged_in}">{{=icon_add}} Add new event </button>
@@ -124,7 +101,7 @@
                 </div>
                 <div class="form-group" id="form_invite">
                     <div>
-                        <input class="form-control string" v-model="form_invite_list" placeholder="Invite" type="text"/>
+                        <input class="form-control string" v-model="form_invite_list" placeholder="Separate attendees by ','" type="text"/>
                         <span class="help-block"></span>
                     </div>
                 </div>
@@ -168,7 +145,7 @@
                             <span class="help-block"></span>
                         </div>
                         <div>
-                            <input class="form-control string" v-model="form_edit_invite_list" placeholder="Invite" type="text"/>
+                            <input class="form-control string" v-model="form_edit_invite_list" placeholder="Separate attendees by ','" type="text"/>
                             <span class="help-block"></span>
                         </div>
                         <div class="form-group">
@@ -200,8 +177,15 @@
         </div>
 
         <div v-if="has_more" class="show_more">
-            <button class="btn btn-default" v-on:click="get_more()">Load more</button>
-        </div> 
+            <div id="whitespace">
+            <button class="btn btn-danger btn-sm" v-on:click="get_more()">Load more</button>
+            </div>
+        </div>
+
+        <div id="bottombar">
+            <span class="pull-right">Copyright &copy; 2016</span>
+            <span class="pull-left"><em>Contributors: Peyton Fonck, Jenna Wu, Leslie Lau, Maaz Siddiqui</em></span>
+        </div>
 
     </div>
 
