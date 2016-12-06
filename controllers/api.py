@@ -98,11 +98,120 @@ def get_posts():
         user=user,
     ))
 
+def get_grid():
+    post_id = request.vars.post_id
+    #logger.info(post_id)
+
+    if auth.user is None:
+        session.flash = T('not logged in')
+        redirect(URL("default", "index"))
+
+    q = ((db.post.user_email == auth.user.email) &
+             (db.post.id == post_id))
+    post = db(q).select().first()
+
+    if post is None:
+        redirect(URL("default", "index"))
+
+    xy = convert_times(post.start_date, post.end_date, post.start_time, post.end_time)
+    #logger.info(post.event_grid)
+
+    return response.json(dict(
+        event_grid=post.event_grid,
+        id=request.vars.id,
+        width=xy['width'],
+        height=xy['height'],
+        
+    ))
+
+def convert_times(start_day1, end_day1, start_time1, end_time1):
+    from datetime import datetime as dt, date, time
+
+    start_day = start_day1
+    end_day = end_day1
+
+    start_time = start_time1
+    end_time = end_time1
+
+    start_timetemp = dt.combine(date.min, start_time) - dt.combine(date.min, datetime.time(0, 0,))
+    start = start_timetemp.seconds /3600
+    
+
+    width = (end_day - start_day).days
+
+
+    height1 = dt.combine(date.min, end_time) - dt.combine(date.min, start_time)
+    height = height1.seconds / 3600
+
+    return dict(height=height, width=width)
+    
+
+def grid_tostring(start_day1, end_day1, start_time1, end_time1):
+    from datetime import datetime as dt, date, time
+
+    start_day = dt.strptime(start_day1, "%Y-%m-%d")
+    end_day = dt.strptime(end_day1, "%Y-%m-%d")
+    #logger.info(start_time1)
+
+    if len(start_time1) > 5:
+        start_time1 = start_time1[:-3]
+
+    start_time1 = start_time1[:-2] + "00"
+    start_time = dt.strptime(start_time1, "%H:%M")
+
+
+    if len(end_time1) > 5:
+        end_time1 = end_time1[:-3]
+
+    end_time1 = end_time1[:-2] + "00"
+    end_time = dt.strptime(end_time1, "%H:%M")
+    
+
+    width = (end_day - start_day).days
+
+
+    #height1 = dt.combine(date.min, end_time) - dt.combine(date.min, start_time)
+    height = (end_time - start_time).seconds / 3600
+
+    #logger.info("height = " + str(height) + " width = " + str(width))
+    grid_stringlist = []
+    invitelist_size = 1
+    
+    for x in range(0, height + 1):
+        for y in range(0, width + 1):
+            temp1 = ""
+            temp2 = ""
+            for z in range(0, invitelist_size):
+                temp1 += "0"
+                temp2 += "0"
+            grid_stringlist.insert((y * width + x), temp1 + " " + temp2)
+    #logger.info(len(grid_stringlist))
+    #logger.info(grid_stringlist[98])
+
+    return grid_stringlist
+
+
+def update_grid():
+    
+    q = ((db.post.user_email == auth.user.email) &
+            (db.post.id == request.vars.id)) 
+    post = db(q).select().first()
+
+    event_grid = request.vars.event_grid.split(',')[1:]
+
+    post.event_grid = event_grid
+    
+    post.update_record()
+
+    return response.json(dict())
+
 # Note that we need the URL to be signed, as this changes the db.
 @auth.requires_signature(hash_vars=False)
 def add_post():
     """Here you get a new post and add it.  Return what you want."""
     # Implement me!
+    grid_stringlist = grid_tostring(request.vars.start_date, request.vars.end_date, request.vars.start_time, request.vars.end_time)
+
     p_id = db.post.insert(
         post_content = request.vars.post_content,
         event_description = request.vars.event_description,
@@ -111,7 +220,8 @@ def add_post():
         end_date = request.vars.end_date,
         start_time = request.vars.start_time,
         end_time = request.vars.end_time,
-        invite_list = request.vars.invite_list
+        invite_list = request.vars.invite_list,
+        event_grid = grid_stringlist,
     )
     p = db.post(p_id)
     return response.json(dict(post=p))
@@ -133,6 +243,8 @@ def edit_post():
             (db.post.id == request.vars.post_id)) 
     post = db(q).select().first()
 
+    grid_stringlist = grid_tostring(request.vars.start_date, request.vars.end_date, request.vars.start_time, request.vars.end_time)
+
     post.updated_on = datetime.datetime.utcnow()
     post.update_record()
     post.post_content = request.vars.post_content
@@ -143,6 +255,8 @@ def edit_post():
     post.start_time = request.vars.start_time
     post.end_time = request.vars.end_time
     post.invite_list = request.vars.invite_list
+
+    post.event_grid = grid_stringlist
     post.update_record()
 
     return response.json(dict())
