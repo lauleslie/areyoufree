@@ -19,6 +19,15 @@ var app = function() {
             self.vue.invite_list = data.invite_list,
             self.vue.user_email = data.user_email,
             self.vue.author_email = data.author_email,
+            self.vue.name = data.name,
+            self.vue.event_description = data.event_description,
+            self.vue.start_date = data.start_date,
+            self.vue.end_date = data.end_date,
+            self.vue.start_time = data.start_time,
+            self.vue.end_time = data.end_time,
+            self.vue.author_name = data.author_name,
+            self.vue.location = data.location,
+
             //alert(self.vue.event_grid);
             self.vue.load_grid();
             
@@ -52,10 +61,16 @@ var app = function() {
         var n = document.getElementById("n" + " " + x + " " + y + " " + z);
         
         index = parseInt(x) * (width + 1) + parseInt(y);
-        templist = self.vue.invite_list.split(", ");
+        
+        if (self.vue.invite_list == "") {
+            templist = []
+        }else {
+            templist = self.vue.invite_list.split(", ");
+        }
         
         if (self.vue.author_email == self.vue.user_email) {
             name_index = templist.length;
+            console.log(name_index);
         }else {
             name_index = templist.indexOf(self.vue.user_email);
         }
@@ -202,6 +217,15 @@ var app = function() {
             invite_list: null,
             user_email: null,
             author_email: null,
+            name: null,
+            event_description: null,
+            start_date: null,
+            end_date: null,
+            start_time: null,
+            end_time: null,
+            location: null,
+            author_name: null,
+
             
         },
         methods: {

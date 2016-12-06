@@ -12,7 +12,7 @@ var app = function() {
             a.push(b[i]);
         }
     };
-
+    
     // Enumerates an array
     var enumerate = function(v) {
         var k=0;
