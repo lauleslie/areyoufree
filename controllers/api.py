@@ -121,6 +121,14 @@ def get_grid():
         invite_list=post.invite_list,
         user_email=auth.user.email,
         author_email=post.user_email,
+        name=post.post_content,
+        event_description=post.event_description,
+        start_date=post.start_date,
+        end_date=post.end_date,
+        start_time=post.start_time,
+        end_time=post.end_time,
+        author_name=get_user_name_from_email(post.user_email),
+        location=post.event_location,
         
     ))
 
@@ -166,9 +174,7 @@ def grid_tostring(start_day1, end_day1, start_time1, end_time1, invitelist):
     end_time1 = end_time1[:-2] + "00"
     end_time = dt.strptime(end_time1, "%H:%M")
     
-
     width = (end_day - start_day).days
-
 
     #height1 = dt.combine(date.min, end_time) - dt.combine(date.min, start_time)
     height = (end_time - start_time).seconds / 3600
@@ -176,8 +182,11 @@ def grid_tostring(start_day1, end_day1, start_time1, end_time1, invitelist):
     #logger.info("height = " + str(height) + " width = " + str(width))
     grid_stringlist = []
 
-    invite_list = invitelist.split(", ")
-    logger.info(invite_list)
+    if invitelist == "":
+        invite_list = []
+    else:
+        invite_list = invitelist.split(", ")
+    #logger.info(invite_list)
     
     for x in range(0, height + 1):
         for y in range(0, width + 1):
@@ -186,6 +195,7 @@ def grid_tostring(start_day1, end_day1, start_time1, end_time1, invitelist):
             for z in range(0, len(invite_list) + 1):
                 temp1 += "0"
                 temp2 += "0"
+
             grid_stringlist.insert((y * width + x), temp1 + " " + temp2)
     #logger.info(len(grid_stringlist))
     logger.info(grid_stringlist)
