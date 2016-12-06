@@ -3,7 +3,9 @@ body {
     background-color: #556180;
 }
 
-
+a:hover {
+    color: #333;
+}
 .main_content{
     background-color: white;
     text-align:left;
