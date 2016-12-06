@@ -16,7 +16,9 @@ var app = function() {
             self.vue.id = data.id;
             self.vue.height = data.height;
             self.vue.width = data.width;
-            //alert('get grid function');
+            self.vue.invite_list = data.invite_list,
+            self.vue.user_email = data.user_email,
+            self.vue.author_email = data.author_email,
             //alert(self.vue.event_grid);
             self.vue.load_grid();
             
@@ -50,30 +52,43 @@ var app = function() {
         var n = document.getElementById("n" + " " + x + " " + y + " " + z);
         
         index = parseInt(x) * (width + 1) + parseInt(y);
+        templist = self.vue.invite_list.split(", ");
+        
+        if (self.vue.author_email == self.vue.user_email) {
+            name_index = templist.length;
+        }else {
+            name_index = templist.indexOf(self.vue.user_email);
+        }
 
         var line = self.vue.event_grid[index].split(" ");
-        var temp1 = line[0];
-        var temp2 = line[1];
+        var temp1 = line[0].split("");
+        var temp2 = line[1].split("");
+
         var temp = "";
         var green = true;
         var counter = 0;
 
+
         if (z == "00") {    
-            if (temp1 == "0") {
-                temp1 = "1";
+            if (temp1[name_index] == "0") {
+                temp1[name_index] = "1";
             }else {
-                temp1 = "0"
-            }
-            temp = temp1;
+                temp1[name_index] = "0"
+            }   
+            temp = temp1.join("");
+
 
         }else {
-            if (temp2 == "0") {
-                temp2 = "1";
+            if (temp2[name_index] == "0") {
+                temp2[name_index] = "1";
             }else {
-                temp2 = "0"
+                temp2[name_index] = "0"
             }
-            temp = temp2; 
+            temp = temp2.join(""); 
         }
+        temp1 = temp1.join("");
+        temp2 = temp2.join("");
+
 
         for (var i = 0; i < temp.length; i++) {
             if (temp[i] == "1") {
@@ -82,9 +97,12 @@ var app = function() {
                 green = false;
             }
         }
+
+        
         line = temp1 + " " + temp2;
         self.vue.event_grid[index] = line;
-        
+
+        //console.log(line);
 
 
         if (green) {
@@ -104,6 +122,7 @@ var app = function() {
        //alert(self.vue.event_grid)
         //self.vue.get_grid();
 
+        invitelist_size = self.vue.invite_list.split(", ").length;
         
         for (var x = 0; x < self.vue.height + 1; x++) {
             for (var y = 0; y < self.vue.width + 1; y++) {
@@ -180,6 +199,9 @@ var app = function() {
             width: 0,
             event_grid: null,
             id: null,
+            invite_list: null,
+            user_email: null,
+            author_email: null,
             
         },
         methods: {
