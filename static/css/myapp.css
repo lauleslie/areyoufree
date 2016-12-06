@@ -187,10 +187,6 @@ span.psw {
 
 @media (min-width:600px) {
     .sidebar{
-        position: fixed;
-        height: 580px;
-        left: 80px;
-        top: 80px;
         width: 250px;
         background: #d8635f;
         color: #FFFFFF;
@@ -238,7 +234,48 @@ span.psw {
 .side_logout_button{
     padding-left: 10px;
 }
+/* event calendar page styling*/
 
 .event_grid {
     background-color: white;
+}
+
+.event_grid table {
+    padding: 100px;
+}
+
+.eventcontainer {
+    background-color: #FFF;
+    width: 90%;
+    align: center;
+}
+
+.eventheader, .eventfooter {
+    background-color: #1b8dbb;
+    padding: 10px;
+}
+
+.eventheader {
+    font-size: 20px;
+}
+
+.calinfo th {
+    font-size: 15px;
+    padding: 5px;
+}
+
+.calinfo td { padding: 5px; }
+
+.attendinfo {
+    background-color: #d8635f;
+    float: left;
+    width: 150px;
+    border-right: 1px solid #EEE;
+    padding: 10px;
+}
+
+.calinfo {
+    background-color: #FFF;
+    margin-left: 150px;
+    padding: 10px;
 }
