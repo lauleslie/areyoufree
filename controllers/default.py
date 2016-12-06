@@ -56,7 +56,7 @@ def edit():
     return dict()
 
 def event():
-    
+
     from datetime import datetime as dt, date, time
 
     post_id = request.vars.id
@@ -70,7 +70,7 @@ def event():
 
     invited = False
 
-    
+
 
     if auth.user.email != post.user_email:
 
@@ -80,10 +80,10 @@ def event():
                 invited = True
 
         if not (invited):
-            session.flash = T('youre not invited')
+            session.flash = T('Sorry, you are not invited to this event.')
             redirect(URL("default", "index"))
 
-    
+
 
 
     start_day = post.start_date
@@ -94,27 +94,27 @@ def event():
 
     start_timetemp = dt.combine(date.min, start_time) - dt.combine(date.min, datetime.time(0, 0,))
     start = start_timetemp.seconds /3600
-    
+
 
     width = (end_day - start_day).days
 
 
     height1 = dt.combine(date.min, end_time) - dt.combine(date.min, start_time)
     height = height1.seconds / 3600
-    
+
     #logger.info(post.event_grid)
 
 
 
     #height = end_time - dt.fromtimestamp(start_time)
-    
+
 
 
 
     #matrix = [[0 for y in range(end_time - start_time)] for x in range(end_day - start_day)]
 
 
-    return dict(height=height, width=width, start_time=start, start_day=start_day.day, start_month=start_day.month, 
+    return dict(height=height, width=width, start_time=start, start_day=start_day.day, start_month=start_day.month,
         start_year=start_day.year, date_convert=date_convert, id=post_id,)
 
 
