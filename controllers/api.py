@@ -254,7 +254,11 @@ def edit_post():
     q = ((db.post.user_email == auth.user.email) &
             (db.post.id == request.vars.post_id)) 
     post = db(q).select().first()
-
+    
+    if post is None:
+        session.flash = T('not authorized')
+        redirect(URL("default", "index"))
+        
     grid_stringlist = grid_tostring(request.vars.start_date, request.vars.end_date, request.vars.start_time, request.vars.end_time, request.vars.invite_list)
 
     post.updated_on = datetime.datetime.utcnow()
