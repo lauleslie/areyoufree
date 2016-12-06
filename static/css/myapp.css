@@ -298,4 +298,5 @@ span.psw {
     background-color: #FFF;
     margin-left: 150px;
     padding: 10px;
+    overflow-y: hidden;
 }

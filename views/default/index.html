@@ -173,7 +173,7 @@
                     <div v-if="logged_in && user == post.user_email" align = "right">
                         <i class="fa fa-trash-o" v-on:click="delete_post(post._idx)"></i>
                     </div>
-                    <div v-if="post.created_on != post.updated_on || logged_in && user == post.user_email">
+                    <div v-if="post.created_on != post.updated_on || logged_in && user == post.user_email" >
                         <i class="fa fa-pencil" v-on:click="edit_post_button(post._idx)"></i>
                         Edited ${post.updated_on}
                     </div>
